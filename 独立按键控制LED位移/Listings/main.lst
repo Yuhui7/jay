@@ -1,0 +1,74 @@
+C51 COMPILER V9.54   MAIN                                                                  01/15/2024 23:14:31 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          void Delay(unsigned int xms)
+   4          {
+   5   1              unsigned char i, j;
+   6   1              while(xms--)
+   7   1              {
+   8   2                      i = 2;
+   9   2              j = 239;
+  10   2              do
+  11   2              {
+  12   3                      while (--j);
+  13   3              } while (--i);
+  14   2              }
+  15   1              
+  16   1      }
+  17          
+  18          unsigned char num;
+  19          void main()
+  20          {       
+  21   1              P2=~0x01;
+  22   1              while(1)
+  23   1              {
+  24   2                      if(P3_1==0)
+  25   2                      {
+  26   3                              Delay(20);
+  27   3                              while(P3_1==0);
+  28   3                              Delay(20);
+  29   3                              
+  30   3                              num++;
+  31   3                              if(num>=8)
+  32   3                                      num=0;
+  33   3                              P2=~(0x01<<num);
+  34   3                      }
+  35   2                      if(P3_0==0)
+  36   2                      {
+  37   3                              Delay(20);
+  38   3                              while(P3_0==0);
+  39   3                              Delay(20);
+  40   3                              
+  41   3                              if(num<=0)
+  42   3                                      num=7;
+  43   3                              else
+  44   3                                      num--;
+  45   3                              P2=~(0x01<<num);
+  46   3                      }
+  47   2              }
+  48   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    112    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   MAIN                                                                  01/15/2024 23:14:31 PAGE 2   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

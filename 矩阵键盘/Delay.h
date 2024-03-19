@@ -1,0 +1,7 @@
+#ifndef _DEKAY_H_
+#define _DELAY_H_
+
+void Delay(unsigned int xms);
+
+
+#endif
